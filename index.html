@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flatdango</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css" />
     <script src="./index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header-container">
-        <div class="header-left">
-            <h2 id="Header">Flatdango</h2>
-        </div>
-        <div class="header-right">
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">movies</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            <form>
-                <input type="text" name="text" class="search" placeholder="Movies">
-                <input type="submit" name="submit" class="submit" value="Search">
-            </form>
-        </div>
-    </header>  
+      <div class="header-left">
+        <h2 id="Header">Flatdango</h2>
+      </div>
+      <div class="header-right">
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">movies</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <form>
+          <input type="text" name="text" class="search" placeholder="Movies" />
+          <input type="submit" name="submit" class="submit" value="Search" />
+        </form>
+      </div>
+    </header>
+    <aside>
+      <ol id="movie-list">
+        <p>MOVIES</p>
+      </ol>
+    </aside>
     <main>
-        <div id="Movies" class="movie-container">
-
-        </div>
-        <aside>
-            <ol id="movie-list">
-                <li>meee</li>
-            </ol>
-        </aside>
+      <div id="Movies" class="movie-container"></div>
     </main>
-</body>
+    <footer>
+      <p>Author: Hege Refsnes</p>
+      <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+    </footer>
+  </body>
 </html>
