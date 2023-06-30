@@ -171,4 +171,20 @@ body{
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
-  }
+}
+main {
+    display: flex;
+}
+
+.movie-container {
+    flex-grow: 1;
+    background-color: white; 
+    padding: 50px;
+}
+
+aside {
+    flex-shrink: 0;
+    background-color:white; 
+    padding: 20px; 
+    width: 15%; 
+}
