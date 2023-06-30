@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', function(){
 function movieInputs(movies , showMovies){
     movies.forEach(movie => {
         let movieWhere = document.createElement('div')
+        let All = `${movie.capacity}`
+        let sold = `${movie.tickets_sold}`
+        let Remaining = parseInt(All - sold)
+
+        console.log(Remaining)
         movieWhere.innerHTML = `
         <img src='${movie.poster}'>
         <h3>${movie.title}<h3>
@@ -25,7 +30,7 @@ function movieInputs(movies , showMovies){
             <span>Show Time : ${movie.showtime}</span>
         </p>
         <p>Tickets sold : ${movie.tickets_sold}</p>
-        <p>Remaining tickets : (${movie.capacity}-${movie.tickets_sold})</p>
+        <p>Remaining tickets : ${Remaining}</p>
         <button> BOOK TICKET</button>
         </div>
         `
