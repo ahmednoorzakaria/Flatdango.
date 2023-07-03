@@ -1,26 +1,42 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let showMovies = document.getElementById('Movies');
-    let showList = document.getElementById('movie-list');
-  
-    fetch('http://localhost:3000/films', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        'Accept': 'application/json'
-      }
+document.addEventListener("DOMContentLoaded", function () {
+  let showMovies = document.getElementById("Movies");
+  let showList = document.getElementById("movie-list");
+
+  fetch("http://localhost:3000/films", {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((movies) => {
+      movieInputs(movies, showMovies);
+      movieList(movies, showList);
+      showMovies.addEventListener("click", function (event) {
+        if (event.target.classList.contains("ambutton")) {
+          const button = event.target;
+          const movieId = button.getAttribute("data-movie-id");
+          const remainingTicketsElement =
+            document.getElementById("remainingTickets");
+          let remainingTickets = parseInt(remainingTicketsElement.innerText);
+
+          if (remainingTickets > 0) {
+            remainingTickets--;
+            remainingTicketsElement.innerText = remainingTickets;
+            console.log(`Ticket bought for movie ID: ${movieId}`);
+          } else {
+            alert("Sorry, this showing is sold out!");
+          }
+        }
+      });
     })
-      .then(res => res.json())
-      .then(movies => {
-        movieInputs(movies, showMovies);
-        movieList(movies, showList);
-      })
-      .catch(error => console.error(error));
-  
-  });
-  
-  function movieInputs(movies, showMovies) {
-    movies.forEach(movie => {
-      let movieWhere = document.createElement('div');
+    .catch((error) => console.error(error));
+});
+
+function movieInputs(movies, showMovies) {
+    movies.forEach((movie) => {
+      let movieWhere = document.createElement("div");
       let All = `${movie.capacity}`;
       let sold = `${movie.tickets_sold}`;
       let Remaining = parseInt(All - sold);
@@ -36,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <span>Show Time: ${movie.showtime}</span>
           </p>
           <p>Tickets sold: ${movie.tickets_sold}</p>
-          <p>Remaining tickets: ${Remaining}</p>
-          <button>BOOK TICKET</button>
+          <p>Remaining tickets: <span id="remainingTickets">${Remaining}</span></p>
+          <button class='ambutton' data-movie-id="${movie.id}">BUY TICKET</button>
         </div>
       `;
   
@@ -45,11 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  function movieList(movies, showList) {
-    movies.forEach(movie => {
-      let movieHere = document.createElement('li');
-      movieHere.innerHTML = movie.title;
-      showList.appendChild(movieHere);
-    });
-  }
-  
+function movieList(movies, showList) {
+  movies.forEach((movie) => {
+    let movieHere = document.createElement("li");
+    movieHere.innerHTML = movie.title;
+    showList.appendChild(movieHere);
+  });
+}
